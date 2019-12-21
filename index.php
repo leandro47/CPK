@@ -14,7 +14,7 @@
     <script src="js/jquery-3.4.1.slim.min.js"></script>
 </head>
 
-<body>
+<body style="background-color:azure;">
     <div class="container">
         <!-- cabeçario  -->
         <div class="row">
@@ -33,38 +33,79 @@
         </div>
         <!-- concorrencia  -->
         <div class="row">
-            <div class="col-sm-12 col-md-6 col-lg-6 shadow p-3 mb-5 bg-white rounded">
-                <h2 class="text-center font-weight-lighter">Empresa Concorrente</h2>
+            <div class="col-sm-12 col-md-5 col-lg-5 shadow p-3 mb-5 bg-white rounded">
+                <h2 class="text-center font-weight-lighter" style="color: #003666">Empresa Concorrente</h2>
+                <hr />
                 <div class="input-group mb-3">
                     <div class="input-group-prepend">
-                        <span class="input-group-text" id="inputGroup-sizing-default">R$</span>
+                        <span class="input-group-text" id="inputGroup-sizing-default" style="background-color:#003666; color:white">R$</span>
                     </div>
                     <input type="tel" class="form-control" placeholder="Preço pneu novo" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" onKeyPress="return(moeda(this,'.',',',event))">
                 </div>
                 <div class="input-group mb-3">
                     <div class="input-group-prepend">
-                        <span class="input-group-text" id="inputGroup-sizing-default">R$</span>
+                        <span class="input-group-text" id="inputGroup-sizing-default" style="background-color:#003666; color:white">R$</span>
                     </div>
                     <input type="tel" class="form-control" placeholder="Preço primeira recapagem" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" onKeyPress="return(moeda(this,'.',',',event))">
                 </div>
                 <!-- linha divisoria  -->
-                <hr/>
+                <hr />
                 <div class="input-group mb-3">
                     <div class="input-group-prepend">
-                        <span class="input-group-text" id="inputGroup-sizing-default">km</span>
+                        <span class="input-group-text" id="inputGroup-sizing-default" style="background-color:#003666; color:white">km</span>
                     </div>
                     <input type="tel" class="form-control" placeholder="Km pneu novo" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
                 </div>
                 <div class="input-group mb-3">
                     <div class="input-group-prepend">
-                        <span class="input-group-text" id="inputGroup-sizing-default">km</span>
+                        <span class="input-group-text" id="inputGroup-sizing-default" style="background-color:#003666; color:white">km</span>
                     </div>
                     <input type="tel" class="form-control" placeholder="Km primeira recapagem" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
                 </div>
-               
-                
+                <div class="text-right">
+                    <button type="button" class="btn btn-primary btn-lg" style="background-color:#003666 ">Calcular CPK</button>
+                </div>
+            </div>
+            <!-- espaço entre os quadrante -->
+        <div class="col-sm-0 col-md-2 col-lg-2" ></div>
+            <!-- bandag  -->
+            <div class="col-sm-12 col-md-5 col-lg-5 shadow p-3 mb-5 bg-white rounded">
+                <div class="col-sm-12 col-md-12 col-lg-12 text-center">
+                <img src="img/bandag-logo-azul.png" height="40px" alt="">
+                </div>
+                <hr />
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="inputGroup-sizing-default" style="background-color:#003666; color:white">R$</span>
+                    </div>
+                    <input type="tel" class="form-control" placeholder="Preço pneu novo" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" onKeyPress="return(moeda(this,'.',',',event))">
+                </div>
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="inputGroup-sizing-default" style="background-color:#003666; color:white">R$</span>
+                    </div>
+                    <input type="tel" class="form-control" placeholder="Preço primeira recapagem" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" onKeyPress="return(moeda(this,'.',',',event))">
+                </div>
+                <!-- linha divisoria  -->
+                <hr />
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="inputGroup-sizing-default" style="background-color:#003666; color:white">km</span>
+                    </div>
+                    <input type="tel" class="form-control" placeholder="Km pneu novo" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                </div>
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="inputGroup-sizing-default" style="background-color:#003666; color:white">km</span>
+                    </div>
+                    <input type="tel" class="form-control" placeholder="Km primeira recapagem" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                </div>
+                <div class="text-right">
+                    <button type="button" class="btn btn-primary btn-lg" style="background-color:#003666 ">Calcular CPK</button>
+                </div>
             </div>
         </div>
+
     </div>
 </body>
 <script language="javascript">
@@ -104,6 +145,8 @@
             a.value += r + l.substr(u - 2, u)
         }
         return !1
+
+
     }
 </script>
 
