@@ -40,13 +40,13 @@
                     <div class="input-group-prepend">
                         <span class="input-group-text" id="inputGroup-sizing-default" style="background-color:#003666; color:white">R$</span>
                     </div>
-                    <input type="tel" class="form-control" placeholder="Preço pneu novo" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" onKeyPress="return(moeda(this,'.',',',event))">
+                    <input type="tel" id="pneunovoconcorrente" class="form-control" placeholder="Preço pneu novo" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" onKeyPress="return(moeda(this,'.',',',event))">
                 </div>
                 <div class="input-group mb-3">
                     <div class="input-group-prepend">
                         <span class="input-group-text" id="inputGroup-sizing-default" style="background-color:#003666; color:white">R$</span>
                     </div>
-                    <input type="tel" class="form-control" placeholder="Preço primeira recapagem" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" onKeyPress="return(moeda(this,'.',',',event))">
+                    <input type="tel" id="recapagemconcorrente" class="form-control" placeholder="Preço primeira recapagem" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" onKeyPress="return(moeda(this,'.',',',event))">
                 </div>
                 <!-- linha divisoria  -->
                 <hr />
@@ -54,16 +54,16 @@
                     <div class="input-group-prepend">
                         <span class="input-group-text" id="inputGroup-sizing-default" style="background-color:#003666; color:white">km</span>
                     </div>
-                    <input type="tel" class="form-control" placeholder="Km pneu novo" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                    <input type="tel" class="form-control" id="kmnovoconcorrente" placeholder="Km pneu novo" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
                 </div>
                 <div class="input-group mb-3">
                     <div class="input-group-prepend">
                         <span class="input-group-text" id="inputGroup-sizing-default" style="background-color:#003666; color:white">km</span>
                     </div>
-                    <input type="tel" class="form-control" placeholder="Km primeira recapagem" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                    <input type="tel" class="form-control" id="kmrecapadoconcorrente" placeholder="Km primeira recapagem" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
                 </div>
                 <div class="text-right">
-                    <button type="button" class="btn btn-primary btn-lg" style="background-color:#003666 ">Calcular CPK</button>
+                    <button type="button" class="btn btn-primary btn-lg" onclick="calculacpkconcorrente()" style="background-color:#003666 ">Calcular CPK</button>
                 </div>
             </div>
             <!-- espaço entre os quadrante -->
@@ -98,10 +98,10 @@
                     <div class="input-group-prepend">
                         <span class="input-group-text" id="inputGroup-sizing-default" style="background-color:#003666; color:white">km</span>
                     </div>
-                    <input type="tel" class="form-control" placeholder="Km primeira recapagem" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                    <input type="tel" class="form-control" id="teste" placeholder="Km primeira recapagem" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
                 </div>
                 <div class="text-right">
-                    <button type="button" class="btn btn-primary btn-lg" style="background-color:#003666 ">Calcular CPK</button>
+                    <button type="button" class="btn btn-primary btn-lg" onclick="calculacpkconcorrente()" style="background-color:#003666 ">Calcular CPK</button>
                 </div>
             </div>
         </div>
@@ -109,6 +109,30 @@
     </div>
 </body>
 <script language="javascript">
+
+    // função calcular cpk concorrente
+    function calculacpkconcorrente(){
+        var pneunovoconcorrente = document.getElementById('pneunovoconcorrente').value
+        pneunovoconcorrente = pneunovoconcorrente.replace(".", ",");
+        pneunovoconcorrente = parseFloat(pneunovoconcorrente);
+        console.log(pneunovoconcorrente);
+
+         var recapagemconcorrente = document.getElementById('recapagemconcorrente').value
+         recapagemconcorrente = recapagemconcorrente.replace(".", ",");
+         console.log(recapagemconcorrente);
+        var kmnovoconcorrente = document.getElementById('kmnovoconcorrente').value
+        console.log(kmnovoconcorrente);
+        var kmrecapadoconcorrente =document.getElementById('kmrecapadoconcorrente').value
+        console.log(kmrecapadoconcorrente);
+
+        var totalpago = pneunovoconcorrente + recapagemconcorrente;
+        console.log(totalpago);
+        var totalrodado = kmnovoconcorrente + kmrecapadoconcorrente;
+        var cpk = totalpago/totalrodado;
+        alert(cpk);
+        
+    }
+    // função mascara de valores monetario
     function moeda(a, e, r, t) {
         let n = "",
             h = j = 0,
