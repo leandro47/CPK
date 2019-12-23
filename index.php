@@ -8,10 +8,11 @@
     <!-- titulo da pagina   -->
     <title>KM Control</title>
     <!-- css e js  -->
+    <script src="js/jquery-3.4.1.slim.min.js"></script>
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <script src="js/bootstrap.min.js"></script>
     <script src="js/popper.min.js"></script>
-    <script src="js/jquery-3.4.1.slim.min.js"></script>
+    
 </head>
 
 <body style="background-color:azure;">
@@ -67,11 +68,11 @@
                 </div>
             </div>
             <!-- espaço entre os quadrante -->
-        <div class="col-sm-0 col-md-2 col-lg-2" ></div>
+            <div class="col-sm-0 col-md-2 col-lg-2"></div>
             <!-- bandag  -->
             <div class="col-sm-12 col-md-5 col-lg-5 shadow p-3 mb-5 bg-white rounded">
                 <div class="col-sm-12 col-md-12 col-lg-12 text-center">
-                <img src="img/bandag-logo-azul.png" height="40px" alt="">
+                    <img src="img/bandag-logo-azul.png" height="40px" alt="">
                 </div>
                 <hr />
                 <div class="input-group mb-3">
@@ -101,7 +102,7 @@
                     <input type="tel" class="form-control" id="teste" placeholder="Km primeira recapagem" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
                 </div>
                 <div class="text-right">
-                    <button type="button" class="btn btn-primary btn-lg" onclick="calculacpkconcorrente()" style="background-color:#003666 ">Calcular CPK</button>
+                    <button type="button" class="btn btn-primary btn-lg" style="background-color:#003666 ">Calcular CPK</button>
                 </div>
             </div>
         </div>
@@ -109,34 +110,49 @@
     </div>
 </body>
 <script language="javascript">
-
     // função calcular cpk concorrente
-    
-    function calculacpkconcorrente(){
+
+    function calculacpkconcorrente() {
         var pneunovoconcorrente = document.getElementById('pneunovoconcorrente').value;
         pneunovoconcorrente = pneunovoconcorrente.replace(".", "");
-        pneunovoconcorrente = pneunovoconcorrente.replace(",",".");
+        pneunovoconcorrente = pneunovoconcorrente.replace(",", ".");
         pneunovoconcorrente = parseFloat(pneunovoconcorrente);
         console.log(pneunovoconcorrente);
-        
-        var recapagemconcorrente = document.getElementById('recapagemconcorrente').value
-          recapagemconcorrente = recapagemconcorrente.replace(".", "");
-          recapagemconcorrente = recapagemconcorrente.replace(",", ".");
-          recapagemconcorrente = parseFloat(recapagemconcorrente);
-         console.log(recapagemconcorrente);
-         var total = recapagemconcorrente + pneunovoconcorrente;
-         console.log(total);
-        // var kmnovoconcorrente = document.getElementById('kmnovoconcorrente').value
-        // console.log(kmnovoconcorrente);
-        // var kmrecapadoconcorrente =document.getElementById('kmrecapadoconcorrente').value
-        // console.log(kmrecapadoconcorrente);
 
-        // var totalpago = pneunovoconcorrente + recapagemconcorrente;
+        var recapagemconcorrente = document.getElementById('recapagemconcorrente').value
+        recapagemconcorrente = recapagemconcorrente.replace(".", "");
+        recapagemconcorrente = recapagemconcorrente.replace(",", ".");
+        recapagemconcorrente = parseFloat(recapagemconcorrente);
+        console.log(recapagemconcorrente);
+
+        var kmnovoconcorrente = document.getElementById('kmnovoconcorrente').value
+        kmnovoconcorrente = kmnovoconcorrente.replace(".", "");
+        kmnovoconcorrente = kmnovoconcorrente.replace(",", ".");
+        kmnovoconcorrente = parseFloat(kmnovoconcorrente);
+        console.log(kmnovoconcorrente);
+
+        var kmrecapadoconcorrente = document.getElementById('kmrecapadoconcorrente').value
+        kmrecapadoconcorrente = kmrecapadoconcorrente.replace(".", "");
+        kmrecapadoconcorrente = kmrecapadoconcorrente.replace(",", ".");
+        kmrecapadoconcorrente = parseFloat(kmrecapadoconcorrente);
+        console.log(kmrecapadoconcorrente);
+
+
+        var totalpago = pneunovoconcorrente + recapagemconcorrente;
         // console.log(totalpago);
-        // var totalrodado = kmnovoconcorrente + kmrecapadoconcorrente;
-        // var cpk = totalpago/totalrodado;
-        // alert(cpk);
-        
+        var totalrodado = kmnovoconcorrente + kmrecapadoconcorrente;
+        var cpk = totalpago / totalrodado;
+        //  var arredonda = function(cpk, casasDecimais) {
+        //  casasDecimais = typeof casasDecimais !== 'undefined' ?  casasDecimais : 4;
+        //  return +(Math.floor(numero + ('e+' + casasDecimais)) + ('e-' + casasDecimais));
+        cpk = arredonda(cpk, 5)
+        alert(cpk);
+
+    }
+
+    function arredonda(d, casas) {
+        var aux = Math.pow(10, casas)
+        return Math.floor(d * aux) / aux
     }
     // função mascara de valores monetario
     function moeda(a, e, r, t) {
