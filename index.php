@@ -111,25 +111,31 @@
 <script language="javascript">
 
     // função calcular cpk concorrente
+    
     function calculacpkconcorrente(){
-        var pneunovoconcorrente = document.getElementById('pneunovoconcorrente').value
-        pneunovoconcorrente = pneunovoconcorrente.replace(".", ",");
+        var pneunovoconcorrente = document.getElementById('pneunovoconcorrente').value;
+        pneunovoconcorrente = pneunovoconcorrente.replace(".", "");
+        pneunovoconcorrente = pneunovoconcorrente.replace(",",".");
         pneunovoconcorrente = parseFloat(pneunovoconcorrente);
         console.log(pneunovoconcorrente);
-
-         var recapagemconcorrente = document.getElementById('recapagemconcorrente').value
-         recapagemconcorrente = recapagemconcorrente.replace(".", ",");
+        
+        var recapagemconcorrente = document.getElementById('recapagemconcorrente').value
+          recapagemconcorrente = recapagemconcorrente.replace(".", "");
+          recapagemconcorrente = recapagemconcorrente.replace(",", ".");
+          recapagemconcorrente = parseFloat(recapagemconcorrente);
          console.log(recapagemconcorrente);
-        var kmnovoconcorrente = document.getElementById('kmnovoconcorrente').value
-        console.log(kmnovoconcorrente);
-        var kmrecapadoconcorrente =document.getElementById('kmrecapadoconcorrente').value
-        console.log(kmrecapadoconcorrente);
+         var total = recapagemconcorrente + pneunovoconcorrente;
+         console.log(total);
+        // var kmnovoconcorrente = document.getElementById('kmnovoconcorrente').value
+        // console.log(kmnovoconcorrente);
+        // var kmrecapadoconcorrente =document.getElementById('kmrecapadoconcorrente').value
+        // console.log(kmrecapadoconcorrente);
 
-        var totalpago = pneunovoconcorrente + recapagemconcorrente;
-        console.log(totalpago);
-        var totalrodado = kmnovoconcorrente + kmrecapadoconcorrente;
-        var cpk = totalpago/totalrodado;
-        alert(cpk);
+        // var totalpago = pneunovoconcorrente + recapagemconcorrente;
+        // console.log(totalpago);
+        // var totalrodado = kmnovoconcorrente + kmrecapadoconcorrente;
+        // var cpk = totalpago/totalrodado;
+        // alert(cpk);
         
     }
     // função mascara de valores monetario
