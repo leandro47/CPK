@@ -214,6 +214,23 @@
             var custobandag = totalrodado * cpkbandag;
             custobandag = arredonda(custobandag,2);
             document.getElementById("custobandag").innerHTML = "R$ "+custobandag;
+            if(custobandag > custoconcorrente){
+                vlreconomia = custobandag - custoconcorrente;
+                document.getElementById("").innerHTML = "R$ "+vlreconomia;
+            }
+            else if(custoconcorrente > custobandag){
+                vlreconomia = custoconcorrente - custobandag;
+                document.getElementById("").innerHTML = "R$ "+vlreconomia;
+            }
+            else{
+                document.getElementById("").innerHTML = "R$ 0.00";
+                Swal.fire({
+                title: 'De acordo com meus calculos!',
+                text: 'As duas empresas estão com o mesmo nivel de custo/beneficio',
+                icon: 'info',
+                confirmButtonText: 'ok'
+            })
+            }
         }
     }
     // função calcular cpk concorrente
