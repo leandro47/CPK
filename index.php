@@ -8,11 +8,13 @@
     <!-- titulo da pagina   -->
     <title>KM Control</title>
     <!-- css e js  -->
+    <script src="js/popper.min.js"></script>
     <script src="js/jquery-3.4.1.slim.min.js"></script>
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <script src="js/bootstrap.min.js"></script>
-    <script src="js/popper.min.js"></script>
-    
+    <script src="js/sweetalert2.js"></script>
+    <script src="sweetalert2.all.min.js"></script>
+
 </head>
 
 <body style="background-color:azure;">
@@ -63,8 +65,17 @@
                     </div>
                     <input type="tel" class="form-control" id="kmrecapadoconcorrente" placeholder="Km primeira recapagem" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
                 </div>
-                <div class="text-right">
-                    <button type="button" class="btn btn-primary btn-lg" onclick="calculacpkconcorrente()" style="background-color:#003666 ">Calcular CPK</button>
+                <div class="row">
+                    <div class="col-sm-7 col-md-7 col-lg-7">
+                        <div class="alert alert-primary" id="resultadoconcorrente" role="alert">
+                            Custo/Km (CPK)
+                        </div>
+                    </div>
+                    <div class="col-sm-5 col-md-5 col-lg-5">
+                        <div class="text-right">
+                            <button type="button" class="btn btn-primary btn-lg" onclick="calculacpkconcorrente()" style="background-color:#003666 ">Calcular CPK</button>
+                        </div>
+                    </div>
                 </div>
             </div>
             <!-- espaço entre os quadrante -->
@@ -79,13 +90,13 @@
                     <div class="input-group-prepend">
                         <span class="input-group-text" id="inputGroup-sizing-default" style="background-color:#003666; color:white">R$</span>
                     </div>
-                    <input type="tel" class="form-control" placeholder="Preço pneu novo" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" onKeyPress="return(moeda(this,'.',',',event))">
+                    <input type="tel" class="form-control" id="pneunovobandag" placeholder="Preço pneu novo" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" onKeyPress="return(moeda(this,'.',',',event))">
                 </div>
                 <div class="input-group mb-3">
                     <div class="input-group-prepend">
                         <span class="input-group-text" id="inputGroup-sizing-default" style="background-color:#003666; color:white">R$</span>
                     </div>
-                    <input type="tel" class="form-control" placeholder="Preço primeira recapagem" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" onKeyPress="return(moeda(this,'.',',',event))">
+                    <input type="tel" class="form-control" id="recapagembandag" placeholder="Preço primeira recapagem" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" onKeyPress="return(moeda(this,'.',',',event))">
                 </div>
                 <!-- linha divisoria  -->
                 <hr />
@@ -93,67 +104,246 @@
                     <div class="input-group-prepend">
                         <span class="input-group-text" id="inputGroup-sizing-default" style="background-color:#003666; color:white">km</span>
                     </div>
-                    <input type="tel" class="form-control" placeholder="Km pneu novo" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                    <input type="tel" class="form-control" id="kmnovobandag" placeholder="Km pneu novo" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
                 </div>
                 <div class="input-group mb-3">
                     <div class="input-group-prepend">
                         <span class="input-group-text" id="inputGroup-sizing-default" style="background-color:#003666; color:white">km</span>
                     </div>
-                    <input type="tel" class="form-control" id="teste" placeholder="Km primeira recapagem" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                    <input type="tel" class="form-control" id="kmrecapadobandag" placeholder="Km primeira recapagem" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
                 </div>
-                <div class="text-right">
-                    <button type="button" class="btn btn-primary btn-lg" style="background-color:#003666 ">Calcular CPK</button>
+                <div class="row">
+                    <div class="col-sm col-md-7 col-lg-7">
+                        <div class="alert alert-primary" id="resultadobandag" role="alert">
+                            Custo/Km (CPK)
+                        </div>
+                    </div>
+                    <div class="col-sm col-md-5 col-lg-5">
+                        <div class="text-right">
+                            <button type="button" class="btn btn-primary btn-lg" onclick="calculacpkbandag()" style="background-color:#003666 ">Calcular CPK</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- iniciando comparativos  -->
+        <div class="row">
+            <div class="col-sm-12 col-md-12 col-lg-12 shadow p-3 mb-5 bg-white rounded">
+                <div class="row">
+                    <div class="col-sm-12 col-md-12 col-lg-12">
+                        <h2 class="text-center font-weight-lighter text-center" style="color: #003666">Vamos comparar?</h2>
+                        <hr>
+                    </div>
+                    <div class="col-sm-12 col-md-12 col-lg-5">
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="inputGroup-sizing-default" style="background-color:#003666; color:white">km</span>
+                            </div>
+                            <input type="tel" class="form-control" id="kmnomes" onChange="range()" placeholder="Quantos Km você roda no mês?" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                        </div>
+                    </div>
+                    <div class="col-sm-12 col-md-12 col-lg-7 ">
+                        <div class="row">
+                            <div class="col-sm-12 col-md-12 col-lg-12">
+                                <label for="qtdmeses">
+                                    <p class="h5 font-weight-light">Por quantos meses?</p>
+                                </label>
+                                <input type="range" class="custom-range" min="1" value="1" max="12" id="qtdmeses" onChange="range()">
+                            </div>
+                            <div class="col-sm-12 col-md-12 col-lg-12 text-center">
+                                <p class="h4 font-weight-light" style="color:#003666" id="displaymeses">1 mes(es)</p>
+
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+                <hr>
+                <div class="row">
+                    <div class="col-sm-12 col-md-6 col-lg-6">
+                        <div class="container shadow p-3 mb-5 bg-white rounded" style="background-color:rgba(195, 221, 249, 0.5)!important;">
+                            <h3 class="text-center font-weight-lighter" style="color: #003666">Custo na concorrencia</h3>
+                            <h2 class="text-center font-weight-light" id="custoconcorrente">R$: 0.00</h2>
+                        </div>
+                    </div>
+                    <div class="col-sm-12 col-md-6 col-lg-6">
+                        <div class="container shadow p-3 mb-5 bg-white rounded" style="background-color:rgba(195, 221, 249, 0.5)!important;">
+                            <h3 class="text-center font-weight-lighter " style="color: #003666">Custo na Bandag</h3>
+                            <h2 class="text-center font-weight-light" id="custobandag">R$: 0.00</h2>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
 
+
     </div>
+    <footer>
+        <div class="text-center" style="background-color:  rgba(0, 123, 255, 0.25);">
+            <p class="font-weight-light" style="color: #003666"> Powered by Leandro Silva © 2020 | All rights reserved.</p>
+
+        </div>
+    </footer>
 </body>
 <script language="javascript">
-    // função calcular cpk concorrente
+    // variaveis globais 
+    var cpkconcorrente = 0;
+    var cpkbandag = 0;
 
+    // função altera valor meses
+    function range() {
+        var qtdmeses = document.getElementById("qtdmeses").value;
+        document.getElementById("displaymeses").innerHTML = qtdmeses + " mes(es)";
+        kmnomes = document.getElementById("kmnomes").value;
+
+        if(kmnomes == ""){
+            Swal.fire({
+                title: 'Ops!',
+                text: 'Você precisa me dizer o quanto você roda no mês primeiro',
+                icon: 'error',
+                confirmButtonText: 'Vou cuidar disso!'
+            })
+        }
+        else {
+            var totalrodado = kmnomes * qtdmeses;
+            var custoconcorrente = totalrodado * cpkconcorrente;
+            custoconcorrente = arredonda(custoconcorrente,2);
+            document.getElementById("custoconcorrente").innerHTML = "R$ "+custoconcorrente;
+
+            var custobandag = totalrodado * cpkbandag;
+            custobandag = arredonda(custobandag,2);
+            document.getElementById("custobandag").innerHTML = "R$ "+custobandag;
+            if(custobandag > custoconcorrente){
+                vlreconomia = custobandag - custoconcorrente;
+                document.getElementById("").innerHTML = "R$ "+vlreconomia;
+            }
+            else if(custoconcorrente > custobandag){
+                vlreconomia = custoconcorrente - custobandag;
+                document.getElementById("").innerHTML = "R$ "+vlreconomia;
+            }
+            else{
+                document.getElementById("").innerHTML = "R$ 0.00";
+                Swal.fire({
+                title: 'De acordo com meus calculos!',
+                text: 'As duas empresas estão com o mesmo nivel de custo/beneficio',
+                icon: 'info',
+                confirmButtonText: 'ok'
+            })
+            }
+        }
+    }
+    // função calcular cpk concorrente
     function calculacpkconcorrente() {
         var pneunovoconcorrente = document.getElementById('pneunovoconcorrente').value;
-        pneunovoconcorrente = pneunovoconcorrente.replace(".", "");
-        pneunovoconcorrente = pneunovoconcorrente.replace(",", ".");
-        pneunovoconcorrente = parseFloat(pneunovoconcorrente);
-        console.log(pneunovoconcorrente);
+        var recapagemconcorrente = document.getElementById('recapagemconcorrente').value;
+        var kmnovoconcorrente = document.getElementById('kmnovoconcorrente').value;
+        var kmrecapadoconcorrente = document.getElementById('kmrecapadoconcorrente').value;
+        if (pneunovoconcorrente == "" || recapagemconcorrente == "" || kmnovoconcorrente == "" || kmrecapadoconcorrente == "") {
+            Swal.fire({
+                title: 'Ops!',
+                text: 'Você precisaria preencher todos os campos para prosseguirmos ;D',
+                icon: 'error',
+                confirmButtonText: 'Vou cuidar disso!'
+            })
+        } else {
+            pneunovoconcorrente = pneunovoconcorrente.replace(".", "");
+            pneunovoconcorrente = pneunovoconcorrente.replace(",", ".");
+            pneunovoconcorrente = parseFloat(pneunovoconcorrente);
+            //console.log(pneunovoconcorrente);
+            recapagemconcorrente = recapagemconcorrente.replace(".", "");
+            recapagemconcorrente = recapagemconcorrente.replace(",", ".");
+            recapagemconcorrente = parseFloat(recapagemconcorrente);
+            // console.log(recapagemconcorrente);
+            kmnovoconcorrente = kmnovoconcorrente.replace(".", "");
+            kmnovoconcorrente = kmnovoconcorrente.replace(",", ".");
+            kmnovoconcorrente = parseFloat(kmnovoconcorrente);
+            //console.log(kmnovoconcorrente);
+            kmrecapadoconcorrente = kmrecapadoconcorrente.replace(".", "");
+            kmrecapadoconcorrente = kmrecapadoconcorrente.replace(",", ".");
+            kmrecapadoconcorrente = parseFloat(kmrecapadoconcorrente);
+            //console.log(kmrecapadoconcorrente);
 
-        var recapagemconcorrente = document.getElementById('recapagemconcorrente').value
-        recapagemconcorrente = recapagemconcorrente.replace(".", "");
-        recapagemconcorrente = recapagemconcorrente.replace(",", ".");
-        recapagemconcorrente = parseFloat(recapagemconcorrente);
-        console.log(recapagemconcorrente);
+            var totalpago = pneunovoconcorrente + recapagemconcorrente;
+            // console.log(totalpago);
+            var totalrodado = kmnovoconcorrente + kmrecapadoconcorrente;
+            var cpk = totalpago / totalrodado;
+            cpkconcorrente = cpk;
+            cpk = arredonda(cpk, 5);
 
-        var kmnovoconcorrente = document.getElementById('kmnovoconcorrente').value
-        kmnovoconcorrente = kmnovoconcorrente.replace(".", "");
-        kmnovoconcorrente = kmnovoconcorrente.replace(",", ".");
-        kmnovoconcorrente = parseFloat(kmnovoconcorrente);
-        console.log(kmnovoconcorrente);
+            document.getElementById("resultadoconcorrente").innerHTML = "R$ " + cpk;
 
-        var kmrecapadoconcorrente = document.getElementById('kmrecapadoconcorrente').value
-        kmrecapadoconcorrente = kmrecapadoconcorrente.replace(".", "");
-        kmrecapadoconcorrente = kmrecapadoconcorrente.replace(",", ".");
-        kmrecapadoconcorrente = parseFloat(kmrecapadoconcorrente);
-        console.log(kmrecapadoconcorrente);
+            var custo = 1 / cpk;
+            custo = arredonda(custo, 0);
+            Swal.fire({
+                title: 'Olha só!',
+                text: 'Você precisaria rodar ' + custo + ' km para custar R$1,00 cada pneu',
+                icon: 'info',
+                confirmButtonText: 'Entendi!'
+            })
 
-
-        var totalpago = pneunovoconcorrente + recapagemconcorrente;
-        // console.log(totalpago);
-        var totalrodado = kmnovoconcorrente + kmrecapadoconcorrente;
-        var cpk = totalpago / totalrodado;
-        //  var arredonda = function(cpk, casasDecimais) {
-        //  casasDecimais = typeof casasDecimais !== 'undefined' ?  casasDecimais : 4;
-        //  return +(Math.floor(numero + ('e+' + casasDecimais)) + ('e-' + casasDecimais));
-        cpk = arredonda(cpk, 5)
-        alert(cpk);
-
+        }
     }
 
-    function arredonda(d, casas) {
-        var aux = Math.pow(10, casas)
-        return Math.floor(d * aux) / aux
+    function calculacpkbandag() {
+        var pneunovobandag = document.getElementById('pneunovobandag').value;
+        var recapagembandag = document.getElementById('recapagembandag').value;
+        var kmnovobandag = document.getElementById('kmnovobandag').value;
+        var kmrecapadobandag = document.getElementById('kmrecapadobandag').value;
+        if (pneunovobandag == "" || recapagembandag == "" || kmnovobandag == "" || kmrecapadobandag == "") {
+            Swal.fire({
+                title: 'Ops!',
+                text: 'Você precisaria preencher todos os campos para prosseguirmos ;D',
+                icon: 'error',
+                confirmButtonText: 'Vou cuidar disso!'
+            })
+        } else {
+            pneunovobandag = pneunovobandag.replace(".", "");
+            pneunovobandag = pneunovobandag.replace(",", ".");
+            pneunovobandag = parseFloat(pneunovobandag);
+            //console.log(pneunovoconcorrente);
+
+            recapagembandag = recapagembandag.replace(".", "");
+            recapagembandag = recapagembandag.replace(",", ".");
+            recapagembandag = parseFloat(recapagembandag);
+            // console.log(recapagemconcorrente);
+
+            kmnovobandag = kmnovobandag.replace(".", "");
+            kmnovobandag = kmnovobandag.replace(",", ".");
+            kmnovobandag = parseFloat(kmnovobandag);
+            //console.log(kmnovoconcorrente);
+
+            kmrecapadobandag = kmrecapadobandag.replace(".", "");
+            kmrecapadobandag = kmrecapadobandag.replace(",", ".");
+            kmrecapadobandag = parseFloat(kmrecapadobandag);
+            //console.log(kmrecapadoconcorrente);
+
+            var totalpago = pneunovobandag + recapagembandag;
+            // console.log(totalpago);
+            var totalrodado = kmnovobandag + kmrecapadobandag;
+            var cpk = totalpago / totalrodado;
+            cpkbandag = cpk;
+            cpk = arredonda(cpk, 5);
+            document.getElementById("resultadobandag").innerHTML = "R$ " + cpk;
+            var custo = 1 / cpk;
+            custo = arredonda(custo, 0);
+            Swal.fire({
+                title: 'Olha só!',
+                text: 'Você precisaria rodar ' + custo + ' km para custar R$1,00 cada pneu',
+                icon: 'info',
+                confirmButtonText: 'Entendi!'
+            })
+
+
+        }
     }
+
+    // função que arredonda valores cpk 
+    function arredonda(numero, casasDecimais) {
+        casasDecimais = typeof casasDecimais !== 'undefined' ? casasDecimais : 2;
+        return +(Math.floor(numero + ('e+' + casasDecimais)) + ('e-' + casasDecimais));
+    };
+
     // função mascara de valores monetario
     function moeda(a, e, r, t) {
         let n = "",
