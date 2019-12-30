@@ -26,15 +26,16 @@ function numberToReal(numero) {
     var quantidadecaminhoes = document.getElementById("qtdveiculos").value;
     var totalpneus = quantidadecaminhoes * quantidadepneus;
     
-    custobandag1 = totalpneus * custoban;
-    custocom1 = totalpneus * custocom;
+     var custobandag1 = totalpneus * custoban;
+     var custocom1 = totalpneus * custocom;
 
     if(custocom1 > custobandag1){
         //Nesse caso a bandag é mais barato
     totaleconomizado = custocom1 - custobandag1;
     totaleconomizado = arredonda(totaleconomizado,2)
+    totaleconomizado = numberToReal(totaleconomizado);
     mostrardiv();
-    document.getElementById("vlrtotal").innerHTML = "R$ "+totaleconomizado;
+    document.getElementById("vlrtotal").innerHTML = totaleconomizado;
     document.getElementById("mesestotal").innerHTML = document.getElementById("qtdmeses").value;
     document.getElementById("empresaeconomica").innerHTML ="Bandag"
 
@@ -43,17 +44,20 @@ function numberToReal(numero) {
         //nesse caso a concorrencia é mais barato
     totaleconomizado = custobandag1 - custocom1;
     totaleconomizado = arredonda(totaleconomizado,2)
+    totaleconomizado = numberToReal(totaleconomizado);
     mostrardiv();
-    document.getElementById("vlrtotal").innerHTML = "R$ "+totaleconomizado;
+    document.getElementById("vlrtotal").innerHTML = totaleconomizado;
     document.getElementById("mesestotal").innerHTML = document.getElementById("qtdmeses").value;
     document.getElementById("empresaeconomica").innerHTML ="Concorrência"
     }
 
     custobandag1 = arredonda(custobandag1,2);
     custocom1 = arredonda(custocom1,2);
+    custobandag1 = numberToReal(custobandag1);
+    custocom1 = numberToReal(custocom1);
 
-    document.getElementById("custoconcorrente1").innerHTML = "R$ "+custocom1;
-    document.getElementById("custobandag1").innerHTML = "R$ "+custobandag1;
+    document.getElementById("custoconcorrente1").innerHTML = custocom1;
+    document.getElementById("custobandag1").innerHTML = custobandag1;
 };
 
  // função altera valor meses
@@ -90,6 +94,7 @@ function numberToReal(numero) {
              // vlreconomia = arredonda(vlreconomia, 2);
              vlreconomia = custobandag - custoconcorrente;
              vlreconomia = arredonda(vlreconomia, 2);
+             vlreconomia = numberToReal(vlreconomia);
             Swal.fire({
              title: 'Esta vendo?',
              text: 'Você economizará por pneu R$'+vlreconomia+' em '+qtdmeses+' mes(es) comprando na Concorrência',
@@ -101,9 +106,10 @@ function numberToReal(numero) {
              // vlreconomia = arredonda(vlreconomia, 2);
              vlreconomia = custoconcorrente - custobandag;
              vlreconomia = arredonda(vlreconomia, 2);
+             vlreconomia = numberToReal(vlreconomia);
              Swal.fire({
              title: 'Esta vendo?',
-             text: 'Você economizará por pneu R$'+vlreconomia+' em '+qtdmeses+' mes(es) comprando na Bandag.',
+             text: 'Você economizará por pneu '+vlreconomia+' em '+qtdmeses+' mes(es) comprando na Bandag.',
              icon: 'success',
              confirmButtonText: 'Ótimo!'
          })
