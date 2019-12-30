@@ -184,11 +184,11 @@
                             <div class="col-sm-12 col-md-6 col-lg-6">
                                 <div class="input-group mb-3" style="background-color:#003666; color:white">
                                     <div class="input-group-prepend">
-                                        <label class="input-group-text" style="background-color:#003666; color:white" for="qtdpneus">Selecione quantidade de pneus por veiculo</label>
+                                        <label class="input-group-text"  style="background-color:#003666; color:white" for="qtdpneus">Selecione quantidade de pneus por veiculo</label>
                                     </div>
-                                    <select class="custom-select" id="qtdpneus">
-                                        <option selected="0">0</option>
-                                        <option value="1">1</option>
+                                    <select class="custom-select" id="qtdpneus" onchange="multiplicapneus()">
+                                        <option value="0">0</option>
+                                        <option selected="1">1</option>
                                         <option value="2">2</option>
                                         <option value="3">3</option>
                                         <option value="4">4</option>
@@ -228,11 +228,11 @@
                             <div class="col-sm-12 col-md-6 col-lg-6">
                                 <div class="input-group mb-3" style="background-color:#003666; color:white">
                                     <div class="input-group-prepend">
-                                        <label class="input-group-text" style="background-color:#003666; color:white" for="qtdveiculos">Selecione quantidade de veiculos</label>
+                                        <label class="input-group-text"  style="background-color:#003666; color:white" for="qtdveiculos">Selecione quantidade de veiculos</label>
                                     </div>
-                                    <select class="custom-select" id="qtdveiculos">
-                                        <option selected>0</option>
-                                        <option value="2">1</option>
+                                    <select class="custom-select" id="qtdveiculos" onchange="multiplicapneus()">
+                                        <option value>0</option>
+                                        <option selected="2">1</option>
                                         <option value="2">2</option>
                                         <option value="3">3</option>
                                         <option value="4">4</option>
@@ -322,13 +322,13 @@
                             <div class="col-sm-12 col-md-6 col-lg-6">
                                 <div class="container shadow p-3 mb-5 bg-white rounded" style="background-color:rgba(195, 221, 249, 0.5)!important;">
                                     <h3 class="text-center font-weight-lighter" style="color: #003666">Custo na concorrencia</h3>
-                                    <h2 class="text-center font-weight-light" id="custoconcorrente">R$: 0.00</h2>
+                                    <h2 class="text-center font-weight-light" id="custoconcorrente1">R$: 0.00</h2>
                                 </div>
                             </div>
                             <div class="col-sm-12 col-md-6 col-lg-6">
                                 <div class="container shadow p-3 mb-5 bg-white rounded" style="background-color:rgba(195, 221, 249, 0.5)!important;">
                                     <h3 class="text-center font-weight-lighter " style="color: #003666">Custo na Bandag</h3>
-                                    <h2 class="text-center font-weight-light" id="custobandag">R$: 0.00</h2>
+                                    <h2 class="text-center font-weight-light" id="custobandag1">R$: 0.00</h2>
                                 </div>
                             </div>
                         </div>

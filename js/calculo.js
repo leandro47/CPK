@@ -1,6 +1,34 @@
  // variaveis globais 
  var cpkconcorrente = 0;
  var cpkbandag = 0;
+ var custocom = 0;
+ var custoban = 0;
+ var totaleconomizado = 0;
+
+  // função que pega quantidade de pneus e caminhões e multiplica
+  function multiplicapneus(){
+    var quantidadepneus = document.getElementById("qtdpneus").value;
+    var quantidadecaminhoes = document.getElementById("qtdveiculos").value;
+    var totalpneus = quantidadecaminhoes * quantidadepneus;
+    
+    custobandag1 = totalpneus * custoban;
+    custocom1 = totalpneus * custocom;
+
+    if(custocom1 > custobandag1){
+        //Nesse caso a bandag é mais barato
+    totaleconomizado = custocom1 - custobandag1;
+    }
+    else if(custobandag1 > custocom1){
+        //nesse caso a concorrencia é mais barato
+    totaleconomizado = custobandag1 - custocom1;
+    }
+
+    custobandag1 = arredonda(custobandag1,2);
+    custocom1 = arredonda(custocom1,2);
+
+    document.getElementById("custoconcorrente1").innerHTML = "R$ "+custocom1;
+    document.getElementById("custobandag1").innerHTML = "R$ "+custobandag1;
+};
 
  // função altera valor meses
  function range() {
@@ -20,19 +48,23 @@
          var totalrodado = kmnomes * qtdmeses;
          var custoconcorrente = totalrodado * cpkconcorrente;
          custoconcorrente = arredonda(custoconcorrente,2);
+         custocom = custoconcorrente;
          document.getElementById("custoconcorrente").innerHTML = "R$ "+custoconcorrente;
 
          var custobandag = totalrodado * cpkbandag;
-         custobandag = arredonda(custobandag,2);
+         custobandag = arredonda(custobandag,2); 
+         custoban = custobandag;
          document.getElementById("custobandag").innerHTML = "R$ "+custobandag;
+         multiplicapneus();
 
          if(custobandag > custoconcorrente){
+           
              // vlreconomia = arredonda(vlreconomia, 2);
              vlreconomia = custobandag - custoconcorrente;
              vlreconomia = arredonda(vlreconomia, 2);
             Swal.fire({
              title: 'Esta vendo?',
-             text: 'Você economizará R$'+vlreconomia+' em '+qtdmeses+' mes(es) comprando na Concorrência',
+             text: 'Você economizará por pneu R$'+vlreconomia+' em '+qtdmeses+' mes(es) comprando na Concorrência',
              icon: 'success',
              confirmButtonText: 'Ótimo!'
          })
@@ -43,7 +75,7 @@
              vlreconomia = arredonda(vlreconomia, 2);
              Swal.fire({
              title: 'Esta vendo?',
-             text: 'Você economizará R$'+vlreconomia+' em '+qtdmeses+' mes(es) comprando na Bandag.',
+             text: 'Você economizará por pneu R$'+vlreconomia+' em '+qtdmeses+' mes(es) comprando na Bandag.',
              icon: 'success',
              confirmButtonText: 'Ótimo!'
          })
@@ -58,6 +90,7 @@
          }
      }
  }
+
  // função calcular cpk concorrente
  function calculacpkconcorrente() {
      var pneunovoconcorrente = document.getElementById('pneunovoconcorrente').value;
