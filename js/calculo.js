@@ -4,6 +4,21 @@
  var custocom = 0;
  var custoban = 0;
  var totaleconomizado = 0;
+ 
+//  formata numero para real 
+function numberToReal(numero) {
+    var numero = numero.toFixed(2).split('.');
+    numero[0] = "R$ " + numero[0].split(/(?=(?:...)*$)/).join('.');
+    return numero.join(',');
+}
+// exibi a div novamente
+ function mostrardiv() {
+    var display = document.getElementById("divresultado").style.display;
+    if(display == "none")
+        document.getElementById("divresultado").style.display = 'block';
+    else
+        document.getElementById("divresultado").style.display = 'block';
+}
 
   // função que pega quantidade de pneus e caminhões e multiplica
   function multiplicapneus(){
@@ -17,10 +32,21 @@
     if(custocom1 > custobandag1){
         //Nesse caso a bandag é mais barato
     totaleconomizado = custocom1 - custobandag1;
+    totaleconomizado = arredonda(totaleconomizado,2)
+    mostrardiv();
+    document.getElementById("vlrtotal").innerHTML = "R$ "+totaleconomizado;
+    document.getElementById("mesestotal").innerHTML = document.getElementById("qtdmeses").value;
+    document.getElementById("empresaeconomica").innerHTML ="Bandag"
+
     }
     else if(custobandag1 > custocom1){
         //nesse caso a concorrencia é mais barato
     totaleconomizado = custobandag1 - custocom1;
+    totaleconomizado = arredonda(totaleconomizado,2)
+    mostrardiv();
+    document.getElementById("vlrtotal").innerHTML = "R$ "+totaleconomizado;
+    document.getElementById("mesestotal").innerHTML = document.getElementById("qtdmeses").value;
+    document.getElementById("empresaeconomica").innerHTML ="Concorrência"
     }
 
     custobandag1 = arredonda(custobandag1,2);
@@ -49,12 +75,14 @@
          var custoconcorrente = totalrodado * cpkconcorrente;
          custoconcorrente = arredonda(custoconcorrente,2);
          custocom = custoconcorrente;
-         document.getElementById("custoconcorrente").innerHTML = "R$ "+custoconcorrente;
+         custoconcorrente = numberToReal(custoconcorrente);
+         document.getElementById("custoconcorrente").innerHTML = custoconcorrente;
 
          var custobandag = totalrodado * cpkbandag;
          custobandag = arredonda(custobandag,2); 
          custoban = custobandag;
-         document.getElementById("custobandag").innerHTML = "R$ "+custobandag;
+         custobandag = numberToReal(custobandag);
+         document.getElementById("custobandag").innerHTML = custobandag;
          multiplicapneus();
 
          if(custobandag > custoconcorrente){

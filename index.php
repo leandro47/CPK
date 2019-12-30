@@ -14,6 +14,10 @@
     <script src="js/bootstrap.min.js"></script>
     <script src="js/sweetalert2.js"></script>
     <!-- <script src="sweetalert2.all.min.js"></script> -->
+    <script>
+        window.onload = ocultadivaocarregar;
+        function ocultadivaocarregar() { $('#divresultado').hide(); }
+    </script>
 
 </head>
 
@@ -173,7 +177,7 @@
                     <div class="col-sm-12 col-md-6 col-lg-6">
                         <div class="container shadow p-3 mb-5 bg-white rounded" style="background-color:rgba(195, 221, 249, 0.5)!important;">
                             <h3 class="text-center font-weight-lighter " style="color: #003666">Custo na Bandag</h3>
-                            <h2 class="text-center font-weight-light" id="custobandag">R$: 0.00</h2>
+                            <h2 class="text-center font-weight-light"  id="custobandag">R$: 0.00</h2>
                         </div>
                     </div>
                 </div>
@@ -184,7 +188,7 @@
                             <div class="col-sm-12 col-md-6 col-lg-6">
                                 <div class="input-group mb-3" style="background-color:#003666; color:white">
                                     <div class="input-group-prepend">
-                                        <label class="input-group-text"  style="background-color:#003666; color:white" for="qtdpneus">Selecione quantidade de pneus por veiculo</label>
+                                        <label class="input-group-text" style="background-color:#003666; color:white" for="qtdpneus">Selecione quantidade de pneus por veiculo</label>
                                     </div>
                                     <select class="custom-select" id="qtdpneus" onchange="multiplicapneus()">
                                         <option value="0">0</option>
@@ -228,7 +232,7 @@
                             <div class="col-sm-12 col-md-6 col-lg-6">
                                 <div class="input-group mb-3" style="background-color:#003666; color:white">
                                     <div class="input-group-prepend">
-                                        <label class="input-group-text"  style="background-color:#003666; color:white" for="qtdveiculos">Selecione quantidade de veiculos</label>
+                                        <label class="input-group-text" style="background-color:#003666; color:white" for="qtdveiculos">Selecione quantidade de veiculos</label>
                                     </div>
                                     <select class="custom-select" id="qtdveiculos" onchange="multiplicapneus()">
                                         <option value>0</option>
@@ -331,24 +335,24 @@
                                     <h2 class="text-center font-weight-light" id="custobandag1">R$: 0.00</h2>
                                 </div>
                             </div>
+                            <div class="col-sm-12 col-md-12 col-lg-12">
+                                <div class="alert alert-success text-center" id="divresultado" role="alert">
+                                    Você economizará no total <b id="vlrtotal">0,00</b> em <b id="mesestotal">0</b> mês(es) comprando na <b id="empresaeconomica"></b>!
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="container shadow p-3 mb-5 bg-white rounded">
-            oi
-            </div>
         </div>
-
-
     </div>
     <footer>
-        <div class="text-center" style="background-color:  rgba(0, 123, 255, 0.25);">
-            <p class="font-weight-light" style="color: #003666"> Powered by Leandro Silva © 2020 | All rights reserved.</p>
-
+        <div class="text-center" style="background-color:#003666;">
+            <p class="font-weight-light" style="color: white;"> Powered by Leandro Silva © 2020 | All rights reserved.</p>
         </div>
     </footer>
 </body>
 <script src="js/calculo.js"></script>
+
 
 </html>
