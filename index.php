@@ -108,13 +108,13 @@
                     <div class="input-group-prepend">
                         <span class="input-group-text" id="inputGroup-sizing-default" style="background-color:#003666; color:white">km</span>
                     </div>
-                    <input type="tel" class="form-control" id="kmnovobandag" placeholder="Km pneu novo" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                    <input type="tel" class="form-control" id="kmnovobandag" placeholder="Km pneu novo" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" onchange="separadormilhar1()">
                 </div>
                 <div class="input-group mb-3">
                     <div class="input-group-prepend">
                         <span class="input-group-text" id="inputGroup-sizing-default" style="background-color:#003666; color:white">km</span>
                     </div>
-                    <input type="tel" class="form-control" id="kmrecapadobandag" placeholder="Km primeira recapagem" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                    <input type="tel" class="form-control" onchange="separadormilhar2()" id="kmrecapadobandag" placeholder="Km primeira recapagem" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
                 </div>
                 <div class="row">
                     <div class="col-sm col-md-7 col-lg-7">

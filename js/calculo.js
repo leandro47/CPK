@@ -4,7 +4,33 @@ var cpkbandag = 0;
 var custocom = 0;
 var custoban = 0;
 var totaleconomizado = 0;
-
+//  formata numero para numero com separacao de milhar
+function separadormilhar1() {
+    var numero = document.getElementById("kmnovobandag").value;
+    console.log(numero);
+    numero = numero.replace(".", "");
+    numero = numero.replace(",", ".");
+    numero = parseFloat(numero);
+    console.log(numero);
+    numero = numero.toFixed(0).split('.');
+    numero[0] = numero[0].split(/(?=(?:...)*$)/).join('.');
+    // return numero.join('.');
+    console.log(numero);
+    document.getElementById("kmnovobandag").value =  numero;
+}
+function separadormilhar2() {
+    var numero = document.getElementById("kmrecapadobandag").value;
+    console.log(numero);
+    numero = numero.replace(".", "");
+    numero = numero.replace(",", ".");
+    numero = parseFloat(numero);
+    console.log(numero);
+    numero = numero.toFixed(0).split('.');
+    numero[0] = numero[0].split(/(?=(?:...)*$)/).join('.');
+    // return numero.join('.');
+    console.log(numero);
+    document.getElementById("kmrecapadobandag").value =  numero;
+}
 //  formata numero para real 
 function numberToReal(numero) {
     var numero = numero.toFixed(2).split('.');
