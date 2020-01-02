@@ -83,32 +83,30 @@ function range() {
         var custoconcorrente = totalrodado * cpkconcorrente;
         custoconcorrente = arredonda(custoconcorrente, 2);
         custocom = custoconcorrente;
-        custoconcorrente = numberToReal(custoconcorrente);
-        document.getElementById("custoconcorrente").innerHTML = custoconcorrente;
+        custoconcorrente1 = numberToReal(custoconcorrente);
+        document.getElementById("custoconcorrente").innerHTML = custoconcorrente1;
 
         var custobandag = totalrodado * cpkbandag;
         custobandag = arredonda(custobandag, 2);
         custoban = custobandag;
-        custobandag = numberToReal(custobandag);
-        document.getElementById("custobandag").innerHTML = custobandag;
+        custobandag1 = numberToReal(custobandag);
+        document.getElementById("custobandag").innerHTML = custobandag1;
         multiplicapneus();
 
         if (custobandag > custoconcorrente) {
 
-            // vlreconomia = arredonda(vlreconomia, 2);
-            vlreconomia = custobandag - custoconcorrente;
+            var vlreconomia = custobandag - custoconcorrente;
             vlreconomia = arredonda(vlreconomia, 2);
             vlreconomia = numberToReal(vlreconomia);
             Swal.fire({
                 title: 'Esta vendo?',
-                text: 'Você economizará por pneu R$' + vlreconomia + ' em ' + qtdmeses + ' mes(es) comprando na Concorrência',
+                text: 'Você economizará por pneu ' + vlreconomia + ' em ' + qtdmeses + ' mes(es) comprando na Concorrência',
                 icon: 'success',
                 confirmButtonText: 'Ótimo!'
             })
         }
         else if (custoconcorrente > custobandag) {
-            // vlreconomia = arredonda(vlreconomia, 2);
-            vlreconomia = custoconcorrente - custobandag;
+            var vlreconomia = custoconcorrente - custobandag;
             vlreconomia = arredonda(vlreconomia, 2);
             vlreconomia = numberToReal(vlreconomia);
             Swal.fire({
