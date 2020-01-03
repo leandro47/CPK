@@ -1,3 +1,4 @@
+
 <html>
 
 <head>
@@ -16,11 +17,12 @@
     <!-- <script src="sweetalert2.all.min.js"></script> -->
     <script>
         window.onload = ocultadivaocarregar;
-        function ocultadivaocarregar() { $('#divresultado').hide(); }
+
+        function ocultadivaocarregar() {
+            $('#divresultado').hide();
+        }
     </script>
-
 </head>
-
 <body style="background-color:azure;">
     <div class="container">
         <!-- cabeçario  -->
@@ -156,12 +158,9 @@
                             </div>
                             <div class="col-sm-12 col-md-12 col-lg-12 text-center">
                                 <p class="h4 font-weight-light" style="color:#003666" id="displaymeses">1 mes(es)</p>
-
                             </div>
                         </div>
-
                     </div>
-
                 </div>
                 <hr>
                 <div class="row">
@@ -177,7 +176,7 @@
                     <div class="col-sm-12 col-md-6 col-lg-6">
                         <div class="container shadow p-3 mb-5 bg-white rounded" style="background-color:rgba(195, 221, 249, 0.5)!important;">
                             <h3 class="text-center font-weight-lighter " style="color: #003666">Custo na Bandag</h3>
-                            <h2 class="text-center font-weight-light"  id="custobandag">R$: 0.00</h2>
+                            <h2 class="text-center font-weight-light" id="custobandag">R$: 0.00</h2>
                         </div>
                     </div>
                 </div>
