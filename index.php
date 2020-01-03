@@ -61,13 +61,13 @@
                     <div class="input-group-prepend">
                         <span class="input-group-text" id="inputGroup-sizing-default" style="background-color:#003666; color:white">km</span>
                     </div>
-                    <input type="tel" class="form-control" id="kmnovoconcorrente" placeholder="Km pneu novo" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                    <input type="tel" class="form-control" onchange="separadormilhar4()" id="kmnovoconcorrente" placeholder="Km pneu novo" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
                 </div>
                 <div class="input-group mb-3">
                     <div class="input-group-prepend">
                         <span class="input-group-text" id="inputGroup-sizing-default" style="background-color:#003666; color:white">km</span>
                     </div>
-                    <input type="tel" class="form-control" id="kmrecapadoconcorrente" placeholder="Km primeira recapagem" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                    <input type="tel" class="form-control" onchange="separadormilhar3()" id="kmrecapadoconcorrente" placeholder="Km primeira recapagem" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
                 </div>
                 <div class="row">
                     <div class="col-sm-7 col-md-7 col-lg-7">
@@ -143,7 +143,7 @@
                             <div class="input-group-prepend">
                                 <span class="input-group-text" id="inputGroup-sizing-default" style="background-color:#003666; color:white">km</span>
                             </div>
-                            <input type="tel" class="form-control" id="kmnomes" onChange="range()" placeholder="Quantos Km você roda no mês?" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                            <input type="tel" class="form-control" id="kmnomes" onchange="range()" placeholder="Quantos Km você roda no mês?" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
                         </div>
                     </div>
                     <div class="col-sm-12 col-md-12 col-lg-7 ">

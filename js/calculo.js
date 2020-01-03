@@ -7,29 +7,85 @@ var totaleconomizado = 0;
 //  formata numero para numero com separacao de milhar
 function separadormilhar1() {
     var numero = document.getElementById("kmnovobandag").value;
-    console.log(numero);
-    numero = numero.replace(".", "");
-    numero = numero.replace(",", ".");
-    numero = parseFloat(numero);
-    console.log(numero);
-    numero = numero.toFixed(0).split('.');
-    numero[0] = numero[0].split(/(?=(?:...)*$)/).join('.');
-    // return numero.join('.');
-    console.log(numero);
-    document.getElementById("kmnovobandag").value =  numero;
+    if (numero == "") { document.getElementById("kmnovobandag").value = ""; }
+    else {
+        console.log(numero);
+        numero = numero.replace(".", "");
+        numero = numero.replace(",", ".");
+        numero = parseFloat(numero);
+        console.log(numero);
+        numero = numero.toFixed(0).split('.');
+        numero[0] = numero[0].split(/(?=(?:...)*$)/).join('.');
+        // return numero.join('.');
+        console.log(numero);
+        document.getElementById("kmnovobandag").value = numero;
+    }
 }
 function separadormilhar2() {
     var numero = document.getElementById("kmrecapadobandag").value;
-    console.log(numero);
-    numero = numero.replace(".", "");
-    numero = numero.replace(",", ".");
-    numero = parseFloat(numero);
-    console.log(numero);
-    numero = numero.toFixed(0).split('.');
-    numero[0] = numero[0].split(/(?=(?:...)*$)/).join('.');
-    // return numero.join('.');
-    console.log(numero);
-    document.getElementById("kmrecapadobandag").value =  numero;
+    if (numero == "") { document.getElementById("kmrecapadobandag").value = ""; }
+    else {
+        console.log(numero);
+        numero = numero.replace(".", "");
+        numero = numero.replace(",", ".");
+        numero = parseFloat(numero);
+        console.log(numero);
+        numero = numero.toFixed(0).split('.');
+        numero[0] = numero[0].split(/(?=(?:...)*$)/).join('.');
+        // return numero.join('.');
+        console.log(numero);
+        document.getElementById("kmrecapadobandag").value = numero;
+    }
+}
+function separadormilhar3() {
+    var numero = document.getElementById("kmrecapadoconcorrente").value;
+    if (numero == "") { document.getElementById("kmrecapadoconcorrente").value = ""; }
+    else {
+        console.log(numero);
+        numero = numero.replace(".", "");
+        numero = numero.replace(",", ".");
+        numero = parseFloat(numero);
+        console.log(numero);
+        numero = numero.toFixed(0).split('.');
+        numero[0] = numero[0].split(/(?=(?:...)*$)/).join('.');
+        // return numero.join('.');
+        console.log(numero);
+        document.getElementById("kmrecapadoconcorrente").value = numero;
+    }
+}
+function separadormilhar4() {
+    var numero = document.getElementById("kmnovoconcorrente").value;
+    if (numero == "") { document.getElementById("kmnovoconcorrente").value = ""; }
+    else {
+        // console.log(numero);
+        numero = numero.replace(".", "");
+        numero = numero.replace(",", ".");
+        numero = parseFloat(numero);
+        console.log(numero);
+        numero = numero.toFixed(0).split('.');
+        numero[0] = numero[0].split(/(?=(?:...)*$)/).join('.');
+        // return numero.join('.');
+        console.log(numero);
+        document.getElementById("kmnovoconcorrente").value = numero;
+    }
+}
+function separadormilhar5() {
+    var numero = document.getElementById("kmnomes").value;
+    if (numero == "") {
+        document.getElementById("kmnomes").value = "1";
+    }
+    else {
+        console.log(numero);
+        numero = numero.replace(".", "");
+        numero = numero.replace(",", ".");
+        numero = parseFloat(numero);
+        console.log(numero);
+        numero = numero.toFixed(0).split('.');
+        numero[0] = numero[0].split(/(?=(?:...)*$)/).join('.');
+        // return numero.join('.');
+        console.log(numero);
+        document.getElementById("kmnomes").value = numero;
+    }
 }
 //  formata numero para real 
 function numberToReal(numero) {
@@ -92,11 +148,15 @@ function multiplicapneus() {
 
 // função altera valor meses
 function range() {
+    separadormilhar5()
     var qtdmeses = document.getElementById("qtdmeses").value;
     document.getElementById("displaymeses").innerHTML = qtdmeses + " mes(es)";
     kmnomes = document.getElementById("kmnomes").value;
+    kmnomes = kmnomes.replace(".", "");
+    kmnomes = kmnomes.replace(",", ".");
+    kmnomes = parseFloat(kmnomes);
 
-    if (kmnomes == "") {
+    if (kmnomes == "1") {
         Swal.fire({
             title: 'Ops!',
             text: 'Você precisa me dizer o quanto você roda no mês primeiro',
